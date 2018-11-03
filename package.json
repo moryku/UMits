@@ -1,0 +1,25 @@
+{
+  "name": "umits",
+  "version": "1.0.0",
+  "description": "E-learning with chatbot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moryku/UMits.git"
+  },
+  "keywords": [
+    "e-learning"
+  ],
+  "author": "moryku",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moryku/UMits/issues"
+  },
+  "homepage": "https://github.com/moryku/UMits#readme",
+  "dependencies": {
+    "@line/bot-sdk": "^6.3.0"
+  }
+}
