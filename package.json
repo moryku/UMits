@@ -21,6 +21,7 @@
   "homepage": "https://github.com/moryku/UMits#readme",
   "dependencies": {
     "@line/bot-sdk": "^6.3.0",
+    "bottender": "^0.15.10",
     "express": "^4.16.4",
     "get-audio-duration": "0.0.1"
   }
