@@ -25,5 +25,8 @@
     "bottender": "^0.15.10",
     "express": "^4.16.4",
     "get-audio-duration": "0.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
