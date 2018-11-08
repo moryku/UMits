@@ -1,7 +1,7 @@
-line-echo-bot-sample
+line-bot-sample
 ==
 
-A sample echo bot implementation of the LINE Messaging API.
+A full-stack LINE Messaging API sample implementation. This sample shows you a practical use of the LINE Messaging API.
 
 This project uses the [Slim framework](http://www.slimframework.com/).
 
@@ -11,8 +11,8 @@ Getting started
 ```
 $ curl -sS https://getcomposer.org/installer | php # Install composer.phar
 $ ./composer.phar install
-$ $EDITOR ./src/LINEBot/EchoBot/Setting.php # <= edit your bot information
-$ php -S 0.0.0.0:8080 -t public
+$ $EDITOR ./src/LINEBot/KitchenSink/Setting.php # <= edit your bot information
+$ ./run.sh 8080
 ```
 
 Hints
@@ -22,9 +22,30 @@ Hints
 
 Entry point of this application.
 
-### [src/LINEBot/EchoBot/Route.php](./src/LINEBot/EchoBot/Route.php)
+### [src/LINEBot/KitchenSink/Route.php](./src/LINEBot/KitchenSink/Route.php)
 
-Core logic of this application that uses the LINE Messaging API.
+Core logic of this application using the LINE Messaging API.
+
+### [Event handlers](./src/LINEBot/KitchenSink/EventHandler)
+
+Handlers for LINE Messaging API events.
+
+Notes
+--
+
+### Temporary directory
+
+This application downloads multimedia files to `./public/static/tmpdir/`.
+The `./run.sh` wrapper removes this content on shut down of the PHP server.
+
+### Base URL
+
+This application serves downloaded multimedia files.
+
+By default, this app constructs URLs for the content with `\Slim\Http\Request->getUri()->getBaseUrl()` as the base URL.
+Unfortunately this process doesn't work correctly if this app runs on a reverse-proxied environment.
+
+If you encounter this problem, configure the base URL to whatever you like using [UrlBuilder](./src/LINEBot/KitchenSink/EventHandler/MessageHandler/Util/UrlBuilder.php)
 
 License
 --
