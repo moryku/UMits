@@ -87,7 +87,7 @@ class TextMessageHandler implements EventHandler
         $replyToken = $this->textMessage->getReplyToken();
         $this->logger->info("Got text message from $replyToken: $text");
 
-        if (strpos($text, 'kotlin') == true) {
+        if (strpos($text, 'kotlin') !== false) {
             $flexMessageBuilder = FlexModulBelajar::get();
             $this->bot->replyMessage($replyToken, $flexMessageBuilder);
         } else {
