@@ -69,7 +69,7 @@ class FlexMateriBelajar
         return FlexMessageBuilder::builder()
             ->setAltText('Materi')
             ->setContents(new CarouselContainerBuilder([
-                self::createItemBubble(111)
+                self::createItemBubble(1)
             ]));
     }
 
@@ -82,38 +82,7 @@ class FlexMateriBelajar
             ->setFooter(self::createItemFooterBlock($item));
     }
 
-    private static function createItemBodyBlock($item)
-    {
-        $components = [];
-        $components[] = TextComponentBuilder::builder()
-            ->setText($item['name'])
-            ->setWrap(true)
-            ->setWeight(ComponentFontWeight::BOLD)
-            ->setSize(ComponentFontSize::XL);
-
-        $components[] = BoxComponentBuilder::builder()
-            ->setLayout(ComponentLayout::BASELINE)
-            ->setContents([
-                TextComponentBuilder::builder()
-                    ->setText($item['chapter'])
-                    ->setWrap(true)
-                    ->setWeight(ComponentFontWeight::BOLD)
-                    ->setSize(ComponentFontSize::XL)
-                    ->setFlex(0),
-                TextComponentBuilder::builder()
-                    ->setText($item['chapterName'])
-                    ->setWrap(true)
-                    ->setWeight(ComponentFontWeight::BOLD)
-                    ->setSize(ComponentFontSize::SM)
-                    ->setFlex(0)
-            ]);
-
-        return BoxComponentBuilder::builder()
-            ->setLayout(ComponentLayout::VERTICAL)
-            ->setSpacing(ComponentSpacing::SM)
-            ->setContents($components);
-    }
-
+    
     private static function createItemMateriBlock($item)
     {
         $components = [];
