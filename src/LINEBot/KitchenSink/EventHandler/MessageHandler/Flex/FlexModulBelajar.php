@@ -36,6 +36,7 @@ use LINE\LINEBot\MessageBuilder\Flex\ComponentBuilder\ImageComponentBuilder;
 use LINE\LINEBot\MessageBuilder\Flex\ComponentBuilder\TextComponentBuilder;
 use LINE\LINEBot\MessageBuilder\Flex\ContainerBuilder\BubbleContainerBuilder;
 use LINE\LINEBot\MessageBuilder\Flex\ContainerBuilder\CarouselContainerBuilder;
+use LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -131,10 +132,7 @@ class FlexModulBelajar
             ->setStyle(ComponentButtonStyle::PRIMARY)
             ->setColor($color)
             ->setAction(
-                new UriTemplateActionBuilder(
-                    'Mulai Belajar',
-                    'https://example.com'
-                )
+                new MessageTemplateActionBuilder('MULAI BELAJAR', 'Mulai Belajar Kotlin')
             );
 
         $wishButton = ButtonComponentBuilder::builder()
