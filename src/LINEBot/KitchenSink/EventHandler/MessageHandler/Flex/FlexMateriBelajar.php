@@ -48,15 +48,14 @@ class FlexMateriBelajar
             'name' => 'Kotlin',
             'chapter' => 'Bab 1',
             'chapterName' => 'Pengenalan Variabel',
-            'description' => 'Pembuatan variabel di Kotlin tidak teralalu formal seperti di Java.
-
-            Pada Kotlin, kita boleh tidak menentukan/menyebutkan tipe datanya. Karena Kotlin sudah mampu mengenali tipe data dari nilai yang akan kita berikan.
-            
-            Pembuatan variabel diawali dengan kata kunci var dan val.
-            \n
-            Contoh membuat variabel dengan tipe data:',
             'stock' => true,
-        ]
+        ],
+        '2' => [
+            'name' => 'Kotlin',
+            'chapter' => 'Bab 2',
+            'chapterName' => 'Pembuatan Fungsi',
+            'stock' => true,
+        ],
     ];
 
     /**
@@ -67,9 +66,10 @@ class FlexMateriBelajar
     public static function get()
     {
         return FlexMessageBuilder::builder()
-            ->setAltText('Materi')
+            ->setAltText('Shopping')
             ->setContents(new CarouselContainerBuilder([
-                self::createItemBubble(1)
+                self::createItemBubble(1),
+                self::createItemBubble(2)
             ]));
     }
 
@@ -78,17 +78,43 @@ class FlexMateriBelajar
         $item = self::$items[$itemId];
         return BubbleContainerBuilder::builder()
             ->setBody(self::createItemBodyBlock($item))
-            ->setMateri(self::createItemMateriBlock($item))
             ->setFooter(self::createItemFooterBlock($item));
     }
 
-    
-    private static function createItemMateriBlock($item)
+    private static function createItemHeroBlock($item)
+    {
+        return ImageComponentBuilder::builder()
+            ->setUrl($item['photo'])
+            ->setSize(ComponentImageSize::FULL)
+            ->setAspectRatio(ComponentImageAspectRatio::R20TO13)
+            ->setAspectMode(ComponentImageAspectMode::COVER);
+    }
+
+    private static function createItemBodyBlock($item)
     {
         $components = [];
         $components[] = TextComponentBuilder::builder()
-            ->setText($item['description'])
-            ->setWrap(true);
+            ->setText($item['name'])
+            ->setWrap(true)
+            ->setWeight(ComponentFontWeight::BOLD)
+            ->setSize(ComponentFontSize::XL);
+
+        $components[] = BoxComponentBuilder::builder()
+            ->setLayout(ComponentLayout::BASELINE)
+            ->setContents([
+                TextComponentBuilder::builder()
+                    ->setText($item['chapter'])
+                    ->setWrap(true)
+                    ->setWeight(ComponentFontWeight::BOLD)
+                    ->setSize(ComponentFontSize::XL)
+                    ->setFlex(0),
+                TextComponentBuilder::builder()
+                    ->setText($item['chapterName'])
+                    ->setWrap(true)
+                    ->setWeight(ComponentFontWeight::BOLD)
+                    ->setSize(ComponentFontSize::SM)
+                    ->setFlex(0)
+            ]);
 
         return BoxComponentBuilder::builder()
             ->setLayout(ComponentLayout::VERTICAL)
@@ -103,8 +129,16 @@ class FlexMateriBelajar
             ->setStyle(ComponentButtonStyle::PRIMARY)
             ->setColor($color)
             ->setAction(
-                new MessageTemplateActionBuilder('SELANJUTNYA', 'Mulai Quiz '.$item['name'].' '.$item['chapter'])
+                new MessageTemplateActionBuilder('MULAI BELAJAR', 'Mulai Belajar '.$item['name'].' '.$item['chapter'])
             );
+
+        // $wishButton = ButtonComponentBuilder::builder()
+        //     ->setAction(
+        //         new UriTemplateActionBuilder(
+        //             'Tambahkan ke Favorite',
+        //             'https://example.com'
+        //         )
+        //     );
 
         return BoxComponentBuilder::builder()
             ->setLayout(ComponentLayout::VERTICAL)
@@ -112,4 +146,19 @@ class FlexMateriBelajar
             ->setContents([$cartButton]);
     }
 
+    private static function createMoreBubble()
+    {
+        return BubbleContainerBuilder::builder()
+            ->setBody(
+                BoxComponentBuilder::builder()
+                    ->setLayout(ComponentLayout::VERTICAL)
+                    ->setSpacing(ComponentSpacing::SM)
+                    ->setContents([
+                        ButtonComponentBuilder::builder()
+                            ->setFlex(1)
+                            ->setGravity(ComponentGravity::CENTER)
+                            ->setAction(new UriTemplateActionBuilder('See more', 'https://example.com'))
+                    ])
+            );
+    }
 }
