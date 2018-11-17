@@ -46,13 +46,15 @@ class FlexMateriBelajar
     private static $items = [
         '1' => [
             'name' => 'Kotlin',
-            'chapter' => 'Bab 1',
-            'chapterName' => 'Pengenalan Variabel',
+            'chapter' => 'Bab 1 ',
+            'chapterName' => 'Variabel',
+            'desc' => 'Pengertian Variabel \n'.
+            'Variabel merupakan simbol yang digunakan untuk menyimpan sebuah nilai. Sedangkan tipe data adalah jenis nilai yang akan disimpan.',
             'stock' => true,
         ],
         '2' => [
             'name' => 'Kotlin',
-            'chapter' => 'Bab 2',
+            'chapter' => 'Bab 2 ',
             'chapterName' => 'Pembuatan Fungsi',
             'stock' => true,
         ],
@@ -109,6 +111,12 @@ class FlexMateriBelajar
                     ->setSize(ComponentFontSize::SM)
                     ->setFlex(0)
             ]);
+        
+        $components[] = TextComponentBuilder::builder()
+            ->setText($item['desc'])
+            ->setWrap(true)
+            ->setWeight(ComponentFontWeight::REGULAR)
+            ->setSize(ComponentFontSize::MD);
 
         return BoxComponentBuilder::builder()
             ->setLayout(ComponentLayout::VERTICAL)
