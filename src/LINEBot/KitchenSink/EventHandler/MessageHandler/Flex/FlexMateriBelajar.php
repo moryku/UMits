@@ -41,23 +41,22 @@ use LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder;
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class FlexModulBelajar
+class FlexMateriBelajar
 {
     private static $items = [
-        '111' => [
-            'photo' => 'https://kotlinlang.org/assets/images/open-graph/kotlin_250x250.png',
+        '1' => [
             'name' => 'Kotlin',
             'chapter' => 'Bab 1',
             'chapterName' => 'Pengenalan Variabel',
+            'description' => 'Pembuatan variabel di Kotlin tidak teralalu formal seperti di Java.
+
+            Pada Kotlin, kita boleh tidak menentukan/menyebutkan tipe datanya. Karena Kotlin sudah mampu mengenali tipe data dari nilai yang akan kita berikan.
+            
+            Pembuatan variabel diawali dengan kata kunci var dan val.
+            \n
+            Contoh membuat variabel dengan tipe data:',
             'stock' => true,
-        ],
-        '112' => [
-            'photo' => 'https://kotlinlang.org/assets/images/open-graph/kotlin_250x250.png',
-            'name' => 'Kotlin',
-            'chapter' => 'Bab 2',
-            'chapterName' => 'Pembuatan Fungsi',
-            'stock' => true,
-        ],
+        ]
     ];
 
     /**
@@ -68,10 +67,9 @@ class FlexModulBelajar
     public static function get()
     {
         return FlexMessageBuilder::builder()
-            ->setAltText('Shopping')
+            ->setAltText('Materi')
             ->setContents(new CarouselContainerBuilder([
-                self::createItemBubble(111),
-                self::createItemBubble(112)
+                self::createItemBubble(111)
             ]));
     }
 
@@ -79,18 +77,9 @@ class FlexModulBelajar
     {
         $item = self::$items[$itemId];
         return BubbleContainerBuilder::builder()
-            ->setHero(self::createItemHeroBlock($item))
             ->setBody(self::createItemBodyBlock($item))
+            ->setMateri(self::createItemMateriBlock($item))
             ->setFooter(self::createItemFooterBlock($item));
-    }
-
-    private static function createItemHeroBlock($item)
-    {
-        return ImageComponentBuilder::builder()
-            ->setUrl($item['photo'])
-            ->setSize(ComponentImageSize::FULL)
-            ->setAspectRatio(ComponentImageAspectRatio::R20TO13)
-            ->setAspectMode(ComponentImageAspectMode::COVER);
     }
 
     private static function createItemBodyBlock($item)
@@ -125,6 +114,19 @@ class FlexModulBelajar
             ->setContents($components);
     }
 
+    private static function createItemMateriBlock($item)
+    {
+        $components = [];
+        $components[] = TextComponentBuilder::builder()
+            ->setText($item['description'])
+            ->setWrap(true);
+
+        return BoxComponentBuilder::builder()
+            ->setLayout(ComponentLayout::VERTICAL)
+            ->setSpacing(ComponentSpacing::SM)
+            ->setContents($components);
+    }
+
     private static function createItemFooterBlock($item)
     {
         $color = $item['stock'] ? null : '#aaaaaa';
@@ -132,16 +134,8 @@ class FlexModulBelajar
             ->setStyle(ComponentButtonStyle::PRIMARY)
             ->setColor($color)
             ->setAction(
-                new MessageTemplateActionBuilder('MULAI BELAJAR', 'Mulai Belajar '.$item['name'].' '.$item['chapter'])
+                new MessageTemplateActionBuilder('SELANJUTNYA', 'Mulai Quiz '.$item['name'].' '.$item['chapter'])
             );
-
-        // $wishButton = ButtonComponentBuilder::builder()
-        //     ->setAction(
-        //         new UriTemplateActionBuilder(
-        //             'Tambahkan ke Favorite',
-        //             'https://example.com'
-        //         )
-        //     );
 
         return BoxComponentBuilder::builder()
             ->setLayout(ComponentLayout::VERTICAL)
@@ -149,19 +143,4 @@ class FlexModulBelajar
             ->setContents([$cartButton]);
     }
 
-    private static function createMoreBubble()
-    {
-        return BubbleContainerBuilder::builder()
-            ->setBody(
-                BoxComponentBuilder::builder()
-                    ->setLayout(ComponentLayout::VERTICAL)
-                    ->setSpacing(ComponentSpacing::SM)
-                    ->setContents([
-                        ButtonComponentBuilder::builder()
-                            ->setFlex(1)
-                            ->setGravity(ComponentGravity::CENTER)
-                            ->setAction(new UriTemplateActionBuilder('See more', 'https://example.com'))
-                    ])
-            );
-    }
 }

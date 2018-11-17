@@ -37,6 +37,7 @@ use LINE\LINEBot\KitchenSink\EventHandler;
 use LINE\LINEBot\KitchenSink\EventHandler\MessageHandler\Flex\FlexSampleRestaurant;
 use LINE\LINEBot\KitchenSink\EventHandler\MessageHandler\Flex\FlexSampleShopping;
 use LINE\LINEBot\KitchenSink\EventHandler\MessageHandler\Flex\FlexModulBelajar;
+use LINE\LINEBot\KitchenSink\EventHandler\MessageHandler\Flex\FlexMateriBelajar;
 use LINE\LINEBot\KitchenSink\EventHandler\MessageHandler\Util\UrlBuilder;
 use LINE\LINEBot\MessageBuilder\Imagemap\BaseSizeBuilder;
 use LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder;
@@ -88,8 +89,13 @@ class TextMessageHandler implements EventHandler
         $this->logger->info("Got text message from $replyToken: $text");
 
         if (strpos($text, 'kotlin') !== false) {
-            $flexMessageBuilder = FlexModulBelajar::get();
-            $this->bot->replyMessage($replyToken, $flexMessageBuilder);
+            if (strpos($text, '1') !== false) {
+                $flexMateriBuilder = FlexMateriBelajar::get();
+                $this->bot->replyMessage($replyToken, $flexMateriBuilder);
+            } else {
+                $flexMessageBuilder = FlexModulBelajar::get();
+                $this->bot->replyMessage($replyToken, $flexMessageBuilder);
+            }
         } else {
             $this->echoBack($replyToken, "Mohon maaf kami masih belum bisa merespon chat anda, sabar nggih");
         }
