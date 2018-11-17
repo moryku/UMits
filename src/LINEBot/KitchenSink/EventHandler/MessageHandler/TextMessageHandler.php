@@ -93,8 +93,16 @@ class TextMessageHandler implements EventHandler
                 $flexMateriBuilder = FlexMateriBelajar::get();
                 $this->bot->replyMessage($replyToken, $flexMateriBuilder);
             } else {
-                $flexMessageBuilder = FlexModulBelajar::get();
-                $this->bot->replyMessage($replyToken, $flexMessageBuilder);
+                // $flexMessageBuilder = FlexModulBelajar::get();
+                // $this->bot->replyMessage($replyToken, $flexMessageBuilder);
+                $this->echoBack($replyToken, "Pembuatan variabel di Kotlin tidak teralalu formal seperti di Java.
+
+                Pada Kotlin, kita boleh tidak menentukan/menyebutkan tipe datanya. Karena Kotlin sudah mampu mengenali tipe data dari nilai yang akan kita berikan.
+                
+                Pembuatan variabel diawali dengan kata kunci var dan val.
+                \n
+                Contoh membuat variabel dengan tipe data:");
+
             }
         } else {
             $this->echoBack($replyToken, "Mohon maaf kami masih belum bisa merespon chat anda, sabar nggih");
