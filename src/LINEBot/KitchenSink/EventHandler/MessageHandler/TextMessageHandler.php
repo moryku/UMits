@@ -84,7 +84,7 @@ class TextMessageHandler implements EventHandler
      */
     public function handle()
     {
-        $text = $this->textMessage->getText();
+        $text = strtolower($this->textMessage->getText());
         $replyToken = $this->textMessage->getReplyToken();
         $this->logger->info("Got text message from $replyToken: $text");
 
