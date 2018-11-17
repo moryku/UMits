@@ -63,13 +63,12 @@ class FlexMateriBelajar
      *
      * @return \LINE\LINEBot\MessageBuilder\FlexMessageBuilder
      */
-    public static function get()
+    public static function get($materNumber)
     {
         return FlexMessageBuilder::builder()
             ->setAltText('Shopping')
             ->setContents(new CarouselContainerBuilder([
-                self::createItemBubble(1),
-                self::createItemBubble(2)
+                self::createItemBubble($materNumber)
             ]));
     }
 
@@ -93,11 +92,6 @@ class FlexMateriBelajar
     private static function createItemBodyBlock($item)
     {
         $components = [];
-        $components[] = TextComponentBuilder::builder()
-            ->setText($item['name'])
-            ->setWrap(true)
-            ->setWeight(ComponentFontWeight::BOLD)
-            ->setSize(ComponentFontSize::XL);
 
         $components[] = BoxComponentBuilder::builder()
             ->setLayout(ComponentLayout::BASELINE)
@@ -129,7 +123,7 @@ class FlexMateriBelajar
             ->setStyle(ComponentButtonStyle::PRIMARY)
             ->setColor($color)
             ->setAction(
-                new MessageTemplateActionBuilder('MULAI BELAJAR', 'Mulai Belajar '.$item['name'].' '.$item['chapter'])
+                new MessageTemplateActionBuilder('MATERI SELANJUTNYA', 'Mulai Belajar '.$item['name'].' '.$item['chapter'])
             );
 
         // $wishButton = ButtonComponentBuilder::builder()

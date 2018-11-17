@@ -90,7 +90,7 @@ class TextMessageHandler implements EventHandler
 
         if (strpos($text, 'kotlin') !== false) {
             if (strpos($text, '1') !== false) {
-                $flexMateriBuilder = FlexMateriBelajar::get();
+                $flexMateriBuilder = FlexMateriBelajar::get(1);
                 $this->bot->replyMessage($replyToken, $flexMateriBuilder);
             } else {
                 $flexMessageBuilder = FlexModulBelajar::get();
