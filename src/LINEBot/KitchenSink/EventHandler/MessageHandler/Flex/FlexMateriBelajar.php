@@ -114,13 +114,13 @@ class FlexMateriBelajar
                     ->setFlex(0)
             ]);
         
-        for ($i = 0; $i < sizeof($item['desc']; $i++)) {
-            $components[] = TextComponentBuilder::builder()
-                ->setText($item['desc'][$i])
-                ->setWrap(true)
-                ->setWeight(ComponentFontWeight::REGULAR)
-                ->setSize(ComponentFontSize::SM);
-        }
+            for ($i = 0; $i < sizeof($item['desc']); $i++) {
+                $components[] = TextComponentBuilder::builder()
+                    ->setText($item['desc'][$i])
+                    ->setWrap(true)
+                    ->setWeight(ComponentFontWeight::REGULAR)
+                    ->setSize(ComponentFontSize::SM);
+            }
 
         return BoxComponentBuilder::builder()
             ->setLayout(ComponentLayout::VERTICAL)
