@@ -55,12 +55,12 @@ class FlexMateriBelajar
                 '',
                 'Pembuatan variabel diawali dengan kata kunci var dan val.',
                 '',
-                'Contoh membuat variabel dengan tipe data:',
-                '// variabel kosong (harus ada tipe data)',
-                '',
-                '// membuat variabel dan langsung diisi',
-                '// tidak wajib menyebut tipe data',
-                'var namaLengkap: String'
+                // 'Contoh membuat variabel dengan tipe data:',
+                // '// variabel kosong (harus ada tipe data)',
+                // '',
+                // '// membuat variabel dan langsung diisi',
+                // '// tidak wajib menyebut tipe data',
+                // 'var namaLengkap: String'
                 // 'var alamat: String = "Mataram"',
                 // 'var tanggalLahir = "05-11-1993" as String',
                 // '',
