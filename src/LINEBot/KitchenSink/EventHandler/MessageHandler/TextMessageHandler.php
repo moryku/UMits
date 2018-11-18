@@ -104,6 +104,7 @@ class TextMessageHandler implements EventHandler
                 } else if (strpos($text, '2') !== false) { 
                     $string = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter1.json");
                     $json_a = json_decode($string, true);
+                    $this->echoBack($replyToken, "hy");
                     $this->echoBack($replyToken, "Quiz Bab Kotlin Chapter 1");
                     $this->echoBack($replyToken, __DIR__);
                     $this->echoBack($replyToken,  $string);
