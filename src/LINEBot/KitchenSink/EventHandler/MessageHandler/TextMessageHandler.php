@@ -46,6 +46,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder;
+use LINE\Evaluasi\EvaluasiCore;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -89,12 +90,26 @@ class TextMessageHandler implements EventHandler
         $this->logger->info("Got text message from $replyToken: $text");
 
         if (strpos($text, 'kotlin') !== false) {
-            if (strpos($text, '1') !== false) {
-                $flexMateriBuilder = FlexMateriBelajar::get(1);
-                $this->bot->replyMessage($replyToken, $flexMateriBuilder);
-            } else {
-                $flexMessageBuilder = FlexModulBelajar::get();
-                $this->bot->replyMessage($replyToken, $flexMessageBuilder);
+            if (strpos($text, 'jawab') !== false) {
+                $string = file_get_contents("/home/michael/test.json");
+                $dataJSON = json_decode($string, true);
+                if (strpos($text, '1') !== false) {
+                    $string = file_get_contents("https://umits.herokuapp.com/src/Evaluasi/Chapter1.json");
+                    $json_a = json_decode($string, true);
+                    $this->echoBack($replyToken, $json_a["question"]);
+                }
+            } else  {
+                if (strpos($text, '1') !== false) {
+                    $flexMateriBuilder = FlexMateriBelajar::get(1);
+                    $this->bot->replyMessage($replyToken, $flexMateriBuilder);
+                } else if (strpos($text, '2') !== false) { 
+                    $string = file_get_contents("https://umits.herokuapp.com/src/Evaluasi/Chapter1.json");
+                    $json_a = json_decode($string, true);
+                    $this->echoBack($replyToken, $json_a["question"]);
+                } else {
+                    $flexMessageBuilder = FlexModulBelajar::get();
+                    $this->bot->replyMessage($replyToken, $flexMessageBuilder);
+                }
             }
         } else {
             $this->echoBack($replyToken, "Mohon maaf kami masih belum bisa merespon chat anda, sabar nggih");

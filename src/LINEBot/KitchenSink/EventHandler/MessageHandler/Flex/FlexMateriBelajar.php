@@ -50,20 +50,26 @@ class FlexMateriBelajar
             'chapterName' => 'Variabel',
             'desc' => [
                 ' ',
+                ' ',
                 'Pengertian Variabel',
+                ' ',
                 ' ',
                 'Variabel merupakan simbol yang digunakan untuk menyimpan sebuah nilai. Sedangkan tipe data adalah jenis nilai yang akan disimpan.',
                 ' ',
+                ' ',
                 'Pembuatan variabel diawali dengan kata kunci var dan val.',
+                ' ',
                 ' ',
                 'Contoh membuat variabel dengan tipe data:',
                 '// variabel kosong (harus ada tipe data)',
+                'var namaLengkap: String',
                 ' ',
                 '// membuat variabel dan langsung diisi',
                 '// tidak wajib menyebut tipe data',
-                'var namaLengkap: String',
                 'var alamat: String = "Mataram"',
                 'var tanggalLahir = "05-11-1993" as String',
+                ' ',
+                ' ',
                 ' ',
                 'Contoh membuat variabel tanpa menyebutkan tipe datanya:',
                 'var namaBarang = "Hardisk Eksternal"',
@@ -72,6 +78,9 @@ class FlexMateriBelajar
                 ' ',
                 ' ',
                 'Pada contoh di atas, tipe datanya ditentukan otomatis sesuai dengan nilai yang kita berikan.',
+                ' ',
+                ' ',
+                ' ',
                 ' ',
                 'Berdasarkan sifatnya, variabel dalam kotlin dibagi menjadi dua jenis.',
                 '1. Imutable: read only',
@@ -85,6 +94,8 @@ class FlexMateriBelajar
                 '// karena variabel ini bersifat imutable',
                 'jenisKelamin = "Perempuan"',
                 ' ',
+                ' ',
+                ' ',
                 '2. Mutable: read and write',
                 ' ',
                 'Sedangkan variabel mutable adalah variabel yang bisa diisi lagi nilainya.',
@@ -93,6 +104,9 @@ class FlexMateriBelajar
                 'var jabatan = "Programmer"',
                 '// isi ulang nilainya',
                 'jabatan = "Project Manager"',
+                ' ',
+                ' ',
+                ' ',
                 ' ',
                 ' ',
                 'Aturan Menulis Variabel di Kotlin',
@@ -134,7 +148,7 @@ class FlexMateriBelajar
         $item = self::$items[$itemId];
         return BubbleContainerBuilder::builder()
             ->setBody(self::createItemBodyBlock($item))
-            ->setFooter(self::createItemFooterBlock($item));
+            ->setFooter(self::createItemFooterBlock($item, $materNumber));
     }
 
     private static function createItemHeroBlock($item)
@@ -181,14 +195,16 @@ class FlexMateriBelajar
             ->setContents($components);
     }
 
-    private static function createItemFooterBlock($item)
+    private static function createItemFooterBlock($item, $itemNumber)
     {
+        $itemNumber = (int) $itemNumber;
+        $itemNext = self::$items[$itemNumber+1];
         $color = $item['stock'] ? null : '#aaaaaa';
         $cartButton = ButtonComponentBuilder::builder()
             ->setStyle(ComponentButtonStyle::PRIMARY)
             ->setColor($color)
             ->setAction(
-                new MessageTemplateActionBuilder('MATERI SELANJUTNYA', 'Mulai Belajar '.$item['name'].' '.$item['chapter'])
+                new MessageTemplateActionBuilder('MATERI SELANJUTNYA', 'Mulai Belajar '.$itemNext['name'].' '.$itemNext['chapter'])
             );
 
         // $wishButton = ButtonComponentBuilder::builder()
