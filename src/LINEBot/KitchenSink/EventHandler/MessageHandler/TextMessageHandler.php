@@ -94,7 +94,7 @@ class TextMessageHandler implements EventHandler
                 // $string = file_get_contents("/home/michael/test.json");
                 // $dataJSON = json_decode($string, true);
                 if (strpos($text, '1') !== false) {
-                    $a = explode("\n",$text)
+                    $a = explode("\n",$text);
                     $this->echoBack($replyToken, sizeof($a));
                 }
             } else  {
