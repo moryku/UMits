@@ -1,0 +1,87 @@
+{
+    "id" : "1",
+    "question" : "Deklarasikan variabel kosong dengan tipe Integer yang mempunyai nama hargaApel lalu beri nilai 10000",
+    "answer" : [
+        {
+            "value" : "var",
+            "status" : true,
+            "child" : [
+                {
+                    "value" : "hargaApel",
+                    "status" : true,
+                    "child" : [
+                        {
+                            "value" : ":",
+                            "status" : true,
+                            "child" : [
+                                {
+                                    "value" : "Integer",
+                                    "status" : true,
+                                    "child" : [
+                                        {
+                                            "value" : "hargaApel",
+                                            "status" : true,
+                                            "child" : [
+                                                {
+                                                    "value" : "=",
+                                                    "status" : true,
+                                                    "child" : [
+                                                        {
+                                                            "value": "10000",
+                                                            "status": true,
+                                                            "message": "Benar"
+                                                        },
+                                                        {
+                                                            "value" : null,
+                                                            "status" : false,
+                                                            "message" : "Nilai pada hargaApel seharusnya 10000"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "value" : null,
+                                                    "status" : false,
+                                                    "message" : "Berikan inisialisasi dengan tanda = pada variabel"
+                                                }
+                                            ]
+                                        }, 
+                                        {
+                                            "value" : null,
+                                            "status" : false,
+                                            "message" : "Variabel perlu diberi inisialisasi"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "value" : null,
+                                    "status" : false,
+                                    "message" : "Tipe Variabel harus bertipe Integer"
+                                }
+                            ]
+                        },
+                        {
+                            "value" : null,
+                            "status" : false,
+                            "message" : "Kurang tanda : setelah nama variabel"
+                        }
+                    ]
+                },
+                {
+                    "value" : null,
+                    "status" : false,
+                    "message" : "Nama variabel tidak sesuai dengan perintah"
+                }
+            ]
+        },
+        {
+            "value" : "val",
+            "status" : false,
+            "message" : "Tipe variabel harusnya bersifat Mutable"
+        },
+        {
+            "value" : null,
+            "status" : false,
+            "message" : "Tipe variabel tidak diketahui"
+        }
+    ]
+}

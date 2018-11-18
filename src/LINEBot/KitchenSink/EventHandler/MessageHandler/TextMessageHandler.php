@@ -103,9 +103,15 @@ class TextMessageHandler implements EventHandler
                     $flexMateriBuilder = FlexMateriBelajar::get(1);
                     $this->bot->replyMessage($replyToken, $flexMateriBuilder);
                 } else if (strpos($text, '2') !== false) { 
-                    $string = file_get_contents("https://umits.herokuapp.com/src/Evaluasi/Chapter1.json");
-                    $json_a = json_decode($string, true);
-                    $this->echoBack($replyToken, $json_a["question"]);
+                    // $string = file_get_contents("https://umits.herokuapp.com/src/Evaluasi/Chapter1.json");
+                    // $json_a = json_decode($string, true);
+                    $file = 'Chapter1.json';
+                    if (file_exists($file)) {
+                        $this->echoBack($replyToken, "Exist");
+                    } else {
+                        $this->echoBack($replyToken, "Tidak Exist");
+                    }
+                    
                 } else {
                     $flexMessageBuilder = FlexModulBelajar::get();
                     $this->bot->replyMessage($replyToken, $flexMessageBuilder);
