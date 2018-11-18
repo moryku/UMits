@@ -56,8 +56,9 @@ class Route
 {
     public function register(\Slim\App $app)
     {
-        $app->get('/evaluasi/kotlin/chapter1', function (\Slim\Http\Request $req, \Slim\Http\Response $res) {
-            return $res->withStatus(400, 'Masuk Pak Eko');
+        $app->get('/evaluasi', function (\Slim\Http\Request $req, \Slim\Http\Response $res) {
+            var_dump("Masuk");
+            die;
         });
 
         $app->post('/callback', function (\Slim\Http\Request $req, \Slim\Http\Response $res) {
