@@ -105,7 +105,8 @@ class TextMessageHandler implements EventHandler
                     $string = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter1.json");
                     $json_a = json_decode($string, true);
                     $this->echoBack($replyToken, "Quiz Bab Kotlin Chapter 1");
-                    $this->echoBack($replyToken,  sizeof($json_a));
+                    $this->echoBack($replyToken, __DIR__);
+                    $this->echoBack($replyToken,  $string);
                 } else {
                     $flexMessageBuilder = FlexModulBelajar::get();
                     $this->bot->replyMessage($replyToken, $flexMessageBuilder);
