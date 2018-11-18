@@ -50,11 +50,16 @@ use LINE\LINEBot\KitchenSink\EventHandler\MessageHandler\TextMessageHandler;
 use LINE\LINEBot\KitchenSink\EventHandler\MessageHandler\VideoMessageHandler;
 use LINE\LINEBot\KitchenSink\EventHandler\PostbackEventHandler;
 use LINE\LINEBot\KitchenSink\EventHandler\UnfollowEventHandler;
+use LINE\Evaluasi\Kotlin\Chapter1;
 
 class Route
 {
     public function register(\Slim\App $app)
     {
+        $app->get('/evaluasi/kotlin/chapter1', function (\Slim\Http\Request $req, \Slim\Http\Response $res) {
+            return $res->withStatus(400, 'Masuk Pak Eko');
+        });
+
         $app->post('/callback', function (\Slim\Http\Request $req, \Slim\Http\Response $res) {
             /** @var LINEBot $bot */
             $bot = $this->bot;
