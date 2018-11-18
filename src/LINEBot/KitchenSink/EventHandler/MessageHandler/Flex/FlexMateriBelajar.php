@@ -48,8 +48,10 @@ class FlexMateriBelajar
             'name' => 'Kotlin',
             'chapter' => 'Bab 1 ',
             'chapterName' => 'Variabel',
-            'desc' => 'Pengertian Variabel \n'.
-            'Variabel merupakan simbol yang digunakan untuk menyimpan sebuah nilai. Sedangkan tipe data adalah jenis nilai yang akan disimpan.',
+            'desc' => [
+                'Pengertian Variabel',
+                'Variabel merupakan simbol yang digunakan untuk menyimpan sebuah nilai. Sedangkan tipe data adalah jenis nilai yang akan disimpan.',
+            ],
             'stock' => true,
         ],
         '2' => [
@@ -112,11 +114,13 @@ class FlexMateriBelajar
                     ->setFlex(0)
             ]);
         
-        $components[] = TextComponentBuilder::builder()
-            ->setText($item['desc'])
-            ->setWrap(true)
-            ->setWeight(ComponentFontWeight::REGULAR)
-            ->setSize(ComponentFontSize::MD);
+        for ($i = 0; $i < sizeof($item['desc']; $i++)) {
+            $components[] = TextComponentBuilder::builder()
+                ->setText($item['desc'][$i])
+                ->setWrap(true)
+                ->setWeight(ComponentFontWeight::REGULAR)
+                ->setSize(ComponentFontSize::SM);
+        }
 
         return BoxComponentBuilder::builder()
             ->setLayout(ComponentLayout::VERTICAL)
