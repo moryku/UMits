@@ -57,8 +57,9 @@ class Route
     public function register(\Slim\App $app)
     {
         $app->get('/evaluasi', function (\Slim\Http\Request $req, \Slim\Http\Response $res) {
-            var_dump("Masuk");
+            var_dump(__DIR__ . '/../../Evaluasi/Kotlin/Chapter1.json');
             die;
+            return $res->withStatus(400, 'Masuk Pak Eko');
         });
 
         $app->post('/callback', function (\Slim\Http\Request $req, \Slim\Http\Response $res) {
