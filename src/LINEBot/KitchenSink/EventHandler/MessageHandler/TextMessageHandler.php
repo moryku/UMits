@@ -91,27 +91,21 @@ class TextMessageHandler implements EventHandler
 
         if (strpos($text, 'kotlin') !== false) {
             if (strpos($text, 'jawab') !== false) {
-                $string = file_get_contents("/home/michael/test.json");
-                $dataJSON = json_decode($string, true);
+                // $string = file_get_contents("/home/michael/test.json");
+                // $dataJSON = json_decode($string, true);
                 if (strpos($text, '1') !== false) {
-                    $string = file_get_contents("https://umits.herokuapp.com/src/Evaluasi/Chapter1.json");
-                    $json_a = json_decode($string, true);
-                    $this->echoBack($replyToken, $json_a["question"]);
+                    $a = explode("\n",$text)
+                    $this->echoBack($replyToken, sizeof($a));
                 }
             } else  {
                 if (strpos($text, '1') !== false) {
                     $flexMateriBuilder = FlexMateriBelajar::get(1);
                     $this->bot->replyMessage($replyToken, $flexMateriBuilder);
                 } else if (strpos($text, '2') !== false) { 
-                    // $string = file_get_contents("https://umits.herokuapp.com/src/Evaluasi/Chapter1.json");
-                    // $json_a = json_decode($string, true);
-                    $file = 'Chapter1.json';
-                    if (file_exists($file)) {
-                        $this->echoBack($replyToken, "Exist");
-                    } else {
-                        $this->echoBack($replyToken, "Tidak Exist");
-                    }
-                    
+                    $string = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter1.json");
+                    $json_a = json_decode($string, true);
+                    $this->echoBack($replyToken, "Quiz Bab Kotlin Chapter 1");
+                    $this->echoBack($replyToken,  $json_a['question']);
                 } else {
                     $flexMessageBuilder = FlexModulBelajar::get();
                     $this->bot->replyMessage($replyToken, $flexMessageBuilder);

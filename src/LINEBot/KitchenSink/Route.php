@@ -56,13 +56,13 @@ class Route
 {
     public function register(\Slim\App $app)
     {
-        $app->get('/evaluasi', function (\Slim\Http\Request $req, \Slim\Http\Response $res) {
-            $string = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter1.json");
-            $json_a = json_decode($string, true);
-            var_dump($json_a);
-            die;
-            return $res->withStatus(400, 'Masuk Pak Eko');
-        });
+        // $app->get('/evaluasi', function (\Slim\Http\Request $req, \Slim\Http\Response $res) {
+        //     $string = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter1.json");
+        //     $json_a = json_decode($string, true);
+        //     var_dump($json_a);
+        //     die;
+        //     return $res->withStatus(400, 'Masuk Pak Eko');
+        // });
 
         $app->post('/callback', function (\Slim\Http\Request $req, \Slim\Http\Response $res) {
             /** @var LINEBot $bot */
