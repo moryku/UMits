@@ -50,11 +50,11 @@ class FlexMateriBelajar
             'chapterName' => 'Variabel',
             'desc' => [
                 'Pengertian Variabel',
-                // '',
+                ' ',
                 'Variabel merupakan simbol yang digunakan untuk menyimpan sebuah nilai. Sedangkan tipe data adalah jenis nilai yang akan disimpan.',
                 // '',
                 'Pembuatan variabel diawali dengan kata kunci var dan val.',
-                // '',
+                // '',1
                 // 'Contoh membuat variabel dengan tipe data:',
                 // '// variabel kosong (harus ada tipe data)',
                 // '',
