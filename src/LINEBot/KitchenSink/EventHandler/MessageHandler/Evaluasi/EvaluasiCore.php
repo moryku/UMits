@@ -2,7 +2,7 @@
 namespace LINE\LINEBot\KitchenSink\EventHandler\MessageHandler\Evaluasi;
 class EvaluasiCore {
 
-    public static function search($data, $jawaban) {
+    public static function search($data, $jawaban, $starttime) {
         $jawabanSplit = explode(" ", $jawaban);
         // for ($i = 0; $i < (sizeof($jawabanSplit)); $i++) {
         //     if (empty($jawabanSplit[$i]) !== false) {
@@ -15,7 +15,11 @@ class EvaluasiCore {
             $nodeAnswer = self::searchBFS($data, $jawabanSplit[$i]);
             // return $nodeAnswer;
             if ($nodeAnswer != null && $nodeAnswer["status"] == false) {
-                return $nodeAnswer["message"];
+                $diff = microtime(true) - $starttime;
+                $sec = intval($diff);
+                $micro = $diff - $sec;
+                $final = "0".strftime(str_replace('0.', '.', sprintf('%.10f', $micro))." detik");
+                return $nodeAnswer["message"]." (".$final.")";
                 break;
             } else {
                 $data = $nodeAnswer["child"];
@@ -25,11 +29,19 @@ class EvaluasiCore {
             if ($data != null && sizeof($data) > 0) {
                 $nodeAnswer = searchBFS($data, null);
                 if ($nodeAnswer["status"] == false) {
-                    return $nodeAnswer["message"];
+                    $diff = microtime(true) - $starttime;
+                    $sec = intval($diff);
+                    $micro = $diff - $sec;
+                    $final = "0".strftime(str_replace('0.', '.', sprintf('%.10f', $micro))." detik");
+                    return $nodeAnswer["message"]." (".$final.")";
                 }
             }
         }
-        return "Jawaban Anda Benar";
+        $diff = microtime(true) - $starttime;
+        $sec = intval($diff);
+        $micro = $diff - $sec;
+        $final = "0".strftime(str_replace('0.', '.', sprintf('%.10f', $micro))." detik");
+        return "Jawaban Anda Benar"." (".$final.")";
     }
 
     public static function searchBFS($data, $targetValue) {

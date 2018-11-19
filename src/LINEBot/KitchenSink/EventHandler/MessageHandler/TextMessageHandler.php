@@ -85,11 +85,12 @@ class TextMessageHandler implements EventHandler
      */
     public function handle()
     {
+        $starttime = microtime(true);
         $textOri = $this->textMessage->getText();
         $text = strtolower($this->textMessage->getText());
         $replyToken = $this->textMessage->getReplyToken();
         $this->logger->info("Got text message from $replyToken: $text");
-
+        
         if (strpos($text, 'kotlin') !== false) {
             if (strpos($text, 'jawab') !== false) {
                 $string = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter1.json");
@@ -111,7 +112,7 @@ class TextMessageHandler implements EventHandler
                         }
                     }
                     // $this->echoBack($replyToken, $jawaban);
-                    $jawaban = EvaluasiCore::search($json_a["answer"], $jawaban);
+                    $jawaban = EvaluasiCore::search($json_a["answer"], $jawaban, $starttime);
                     $this->echoBack($replyToken, $jawaban);
                 }
             } else  {
@@ -121,7 +122,7 @@ class TextMessageHandler implements EventHandler
                 } else if (strpos($text, '2') !== false) { 
                     $string = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter1.json");
                     $json_a = json_decode($string, true);
-                    $this->echoBack($replyToken,  "Pertanyaan Materi Kotlin Chapter 1 : \n\n".$json_a["question"]."\n\nContoh Cara Menjawab : \n\n Jawab Quiz Kotlin Chapter 1 \n{Jawaban Anda}");
+                    $this->echoBack($replyToken,  "Untuk masuk ke materi selanjutnya jawab pertanyaan Materi Kotlin Chapter 1 : \n\n".$json_a["question"]."\n\nContoh Cara Menjawab : \n\nJawab Quiz Kotlin Chapter 1 \n{Jawaban Anda}");
                 } else {
                     $flexMessageBuilder = FlexModulBelajar::get();
                     $this->bot->replyMessage($replyToken, $flexMessageBuilder);
