@@ -85,6 +85,7 @@ class TextMessageHandler implements EventHandler
      */
     public function handle()
     {
+        $textOri = $this->textMessage->getText();
         $text = strtolower($this->textMessage->getText());
         $replyToken = $this->textMessage->getReplyToken();
         $this->logger->info("Got text message from $replyToken: $text");
@@ -95,7 +96,7 @@ class TextMessageHandler implements EventHandler
                 $json_a = json_decode($string, true);
                 if (strpos($text, '1') !== false) {
                     $jawaban = "";
-                    $a = explode("\n",$text);
+                    $a = explode("\n",$textOri);
                     for ($i = 0; $i < sizeof($a); $i++) {
                         
                         if (strpos($a[$i], 'quiz') !== false && strpos($a[$i], '1') !== false) {
