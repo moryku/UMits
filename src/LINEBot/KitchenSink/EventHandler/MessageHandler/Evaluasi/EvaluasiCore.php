@@ -3,7 +3,6 @@ namespace LINE\LINEBot\KitchenSink\EventHandler\MessageHandler\Evaluasi;
 class EvaluasiCore {
 
     public static function search($data, $jawaban) {
-        return "masuk pak eko";
         $jawabanSplit = explode(" ", $jawaban);
         $nodeAnswer;
         for ($i = 0; $i < (sizeof($jawabanSplit)); $i++) {
