@@ -204,7 +204,7 @@ class FlexMateriBelajar
             ->setStyle(ComponentButtonStyle::PRIMARY)
             ->setColor($color)
             ->setAction(
-                new MessageTemplateActionBuilder('MATERI SELANJUTNYA', 'Mulai Belajar '.$itemNext['name'].' '.$itemNext['chapter'])
+                new MessageTemplateActionBuilder('MATERI SELANJUTNYA', 'Mulai Belajar Kotlin Bab 2')
             );
 
         // $wishButton = ButtonComponentBuilder::builder()
