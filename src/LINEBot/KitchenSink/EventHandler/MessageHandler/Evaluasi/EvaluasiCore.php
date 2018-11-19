@@ -3,6 +3,7 @@ namespace LINE\LINEBot\KitchenSink\EventHandler\MessageHandler\Evaluasi;
 class EvaluasiCore {
 
     public static function search($data, $jawaban) {
+        return self::searchBFS2($jawaban);
         $jawabanSplit = explode(" ", $jawaban);
         $nodeAnswer;
         for ($i = 0; $i < (sizeof($jawabanSplit)); $i++) {
@@ -25,6 +26,9 @@ class EvaluasiCore {
         return "Jawaban Anda Benar";
     }
 
+    public static function searchBFS2($jawaban) {
+        return $jawaban;
+    }
     public static function searchBFS($data, $targetValue) {
         for ($i = 0; $i < (sizeof($data)); $i++) {
             // var_dump($data[$i]["value"]);
