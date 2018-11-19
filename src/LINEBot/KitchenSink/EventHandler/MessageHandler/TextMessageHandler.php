@@ -46,7 +46,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder;
-use LINE\LINEBot\KitchenSink\EventHandler\Evaluasi\EvaluasiCore;
+use LINE\LINEBot\KitchenSink\EventHandler\MessageHandler\Evaluasi\EvaluasiCore;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
