@@ -109,7 +109,7 @@ class TextMessageHandler implements EventHandler
                             }
                         }
                     }
-                    // $this->echoBack($replyToken, $jawaban);
+                    $this->echoBack($replyToken, $jawaban);
                     $jawaban = EvaluasiCore::search($json_a["answer"], $jawaban);
                     $this->echoBack($replyToken, $jawaban);
                 }
