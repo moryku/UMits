@@ -94,20 +94,21 @@ class TextMessageHandler implements EventHandler
                 $string = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter1.json");
                 $json_a = json_decode($string, true);
                 if (strpos($text, '1') !== false) {
-                    $a = explode("\n",$text);
                     $jawaban = "";
+                    $a = explode("\n",$text);
                     for ($i = 0; $i < sizeof($a); $i++) {
-                        if (strpos($jawaban[$i], 'quiz') !== false && strpos($jawaban[$i], '1') !== false) {
+                        
+                        if (strpos($a[$i], 'quiz') !== false && strpos($a[$i], '1') !== false) {
                             
                         } else {
                             if ($i == 0) {
-                                $jawaban = $jawaban.$a[$i];
+                                $jawaban = $a[$i];
                             } else {
-                                $jawaban = $jawaban." ".$jawaban.$a[$i];
+                                $jawaban = $jawaban." ".$a[$i];
                             }
                         }
                     }
-                    // $jawaban = EvaluasiCore::search($json_a, $jawaban);
+                    $jawaban = EvaluasiCore::search($json_a, $jawaban);
                     $this->echoBack($replyToken, $jawaban);
                 }
             } else  {
