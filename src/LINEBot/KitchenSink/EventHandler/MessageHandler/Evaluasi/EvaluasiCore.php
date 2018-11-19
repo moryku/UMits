@@ -4,12 +4,16 @@ class EvaluasiCore {
 
     public static function search($data, $jawaban) {
         $jawabanSplit = explode(" ", $jawaban);
-
-        return $jawabanSplit[0]."---".$jawabanSplit[1];
+        // for ($i = 0; $i < (sizeof($jawabanSplit)); $i++) {
+        //     if (empty($jawabanSplit[$i]) !== false) {
+        //         unset($jawabanSplit[$i]); 
+        //     }
+        // }
+        // $jawabanSplit = array_values($jawabanSplit);
         $nodeAnswer;
-        for ($i = 0; $i < (sizeof($jawabanSplit)); $i++) {
+        for ($i = 1; $i < (sizeof($jawabanSplit)); $i++) {
             $nodeAnswer = self::searchBFS($data, $jawabanSplit[$i]);
-            return $nodeAnswer;
+            // return $nodeAnswer;
             if ($nodeAnswer != null && $nodeAnswer["status"] == false) {
                 return $nodeAnswer["message"];
                 break;
@@ -32,7 +36,7 @@ class EvaluasiCore {
         for ($i = 0; $i < (sizeof($data)); $i++) {
             // var_dump($data[$i]["value"]);
             // var_dump($targetValue);
-            return $data[$i]["value"]."---".$targetValue;
+            // return $data[$i]["value"]."---".$targetValue;
             if ($data[$i]["value"] == $targetValue) {
                 if ($data[$i]["status"] == true) {
                     if (self::hasChild($data[$i]) == true) {
