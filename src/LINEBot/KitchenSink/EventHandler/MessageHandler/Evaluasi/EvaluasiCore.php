@@ -4,6 +4,8 @@ class EvaluasiCore {
 
     public static function search($data, $jawaban) {
         $jawabanSplit = explode(" ", $jawaban);
+
+        return $jawaban."--".sizeof($jawabanSplit);
         $nodeAnswer;
         for ($i = 0; $i < (sizeof($jawabanSplit)); $i++) {
             $nodeAnswer = self::searchBFS($data, $jawabanSplit[$i]);
