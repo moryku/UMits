@@ -96,20 +96,21 @@ class TextMessageHandler implements EventHandler
                 $json_a = json_decode($string, true);
                 if (strpos($text, '1') !== false) {
                     $jawaban = "";
-                    $a = explode("\n",$textOri);
+                    $a = explode("\n",$text);
+                    $aOri = explode("\n",$textOri);
                     for ($i = 0; $i < sizeof($a); $i++) {
                         
                         if (strpos($a[$i], 'quiz') !== false && strpos($a[$i], '1') !== false) {
                             
                         } else {
                             if ($i == 0) {
-                                $jawaban = $a[$i];
+                                $jawaban = $aOri[$i];
                             } else {
-                                $jawaban = $jawaban." ".$a[$i];
+                                $jawaban = $jawaban." ".$aOri[$i];
                             }
                         }
                     }
-                    $this->echoBack($replyToken, $jawaban);
+                    // $this->echoBack($replyToken, $jawaban);
                     $jawaban = EvaluasiCore::search($json_a["answer"], $jawaban);
                     $this->echoBack($replyToken, $jawaban);
                 }
