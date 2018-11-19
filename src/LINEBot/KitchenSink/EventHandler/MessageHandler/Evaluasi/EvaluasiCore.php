@@ -1,15 +1,13 @@
 <?php
-
+namespace LINE\LINEBot\KitchenSink\EventHandler\MessageHandler\Evaluasi;
 class EvaluasiCore {
 
-
-
-    function search($data, $jawaban) {
+    public static function search($data, $jawaban) {
         return "masuk pak eko";
         $jawabanSplit = explode(" ", $jawaban);
         $nodeAnswer;
         for ($i = 0; $i < (sizeof($jawabanSplit)); $i++) {
-            $nodeAnswer = searchBFS($data, $jawabanSplit[$i]);
+            $nodeAnswer = self::searchBFS($data, $jawabanSplit[$i]);
             if ($nodeAnswer != null && $nodeAnswer["status"] == false) {
                 return $nodeAnswer["message"];
                 break;
@@ -28,13 +26,13 @@ class EvaluasiCore {
         return "Jawaban Anda Benar";
     }
 
-    function searchBFS($data, $targetValue) {
+    public static function searchBFS($data, $targetValue) {
         for ($i = 0; $i < (sizeof($data)); $i++) {
             // var_dump($data[$i]["value"]);
             // var_dump($targetValue);
             if ($data[$i]["value"] == $targetValue) {
                 if ($data[$i]["status"] == true) {
-                    if (hasChild($data[$i]) == true) {
+                    if (self::hasChild($data[$i]) == true) {
                         return $data[$i];
                     } else {
                         return null;
@@ -48,7 +46,7 @@ class EvaluasiCore {
         }
     }
 
-    function hasChild($data) {
+    public static function hasChild($data) {
         if (isset($data["child"]) && sizeof($data["child"]) > 0 ) {
             return true;
         }
