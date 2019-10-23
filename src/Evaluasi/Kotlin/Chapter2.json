@@ -30,52 +30,52 @@
                         {
                           "value": null,
                           "status": false,
-                          "message": "Nilai konstanta pada variable nama seharusnya budi"
+                          "message": "Nilai konstanta pada constanta nama seharusnya budi"
                         }
                       ]
                     },
                     {
                       "value": null,
                       "status": false,
-                      "message": "Berikan inisialisasi dengan tanda = pada variabel"
+                      "message": "Berikan inisialisasi dengan tanda = pada constanta"
                     },
                     {
                       "value": null,
                       "status": false,
-                      "message": "Variabel perlu diberi inisialisasi"
+                      "message": "Constanta perlu diberi inisialisasi"
                     }
                   ]
                 },
                 {
                   "value": null,
                   "status": false,
-                  "message": "Tipe Variabel harus bertipe Integer"
+                  "message": "Tipe constanta harus bertipe Integer"
                 }
               ]
             },
             {
               "value": null,
               "status": false,
-              "message": "Kurang tanda : setelah nama variabel"
+              "message": "Kurang tanda : setelah nama constanta"
             }
           ]
         },
         {
           "value": null,
           "status": false,
-          "message": "Nama variabel tidak sesuai dengan perintah"
+          "message": "Nama constanta tidak sesuai dengan perintah"
         }
       ]
     },
     {
       "value": "val",
       "status": false,
-      "message": "Tipe variabel harusnya bersifat Mutable"
+      "message": "Tipe constanta harusnya bersifat Imutable"
     },
     {
       "value": null,
       "status": false,
-      "message": "Tipe variabel tidak diketahui"
+      "message": "Tipe constanta tidak diketahui"
     }
   ]
 }
