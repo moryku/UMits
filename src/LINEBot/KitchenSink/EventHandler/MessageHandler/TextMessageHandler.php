@@ -121,8 +121,10 @@ class TextMessageHandler implements EventHandler
                     $this->bot->replyMessage($replyToken, $flexMateriBuilder);
                 } else if (strpos($text, '2') !== false) { 
                     $string = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter1.json");
+                    $string2 = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter2.json");
                     $json_a = json_decode($string, true);
-                    $this->echoBack($replyToken,  "Untuk masuk ke materi selanjutnya jawab pertanyaan Materi Kotlin Chapter 1 : \n\n".$json_a["question"]."\n\nContoh Cara Menjawab : \n\nJawab Quiz Kotlin Chapter 1 \n{Jawaban Anda}");
+                    $json_b = json_decode($string2, true);
+                    $this->echoBack($replyToken,  "Untuk masuk ke materi selanjutnya jawab pertanyaan Materi Kotlin Chapter 1 : \n\n"."Soal No 1.\n".$json_a["question"]."\n\n"."Soal No 2.\n".$json_b["question"]."\n\nContoh Cara Menjawab : \n\nJawab Quiz Kotlin Chapter 1 \n{Jawaban Anda}");
                 } else {
                     $flexMessageBuilder = FlexModulBelajar::get();
                     $this->bot->replyMessage($replyToken, $flexMessageBuilder);
