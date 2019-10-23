@@ -1,87 +1,81 @@
 {
-  "id" : "1",
-  "question" : "Deklarasikan variabel kosong dengan tipe String yang mempunyai nama hargaApel lalu beri nilai 10000",
-  "answer" : [
+  "id": "2",
+  "question": "Buatlah sebuah constanta dengan tipe string yag bernama nama dan mempunyai nilai budi",
+  "answer": [
     {
-      "value" : "var",
-      "status" : true,
-      "child" : [
+      "value": "val",
+      "status": true,
+      "child": [
         {
-          "value" : "hargaApel",
-          "status" : true,
-          "child" : [
+          "value": "nama",
+          "status": true,
+          "child": [
             {
-              "value" : ":",
-              "status" : true,
-              "child" : [
+              "value": ":",
+              "status": true,
+              "child": [
                 {
-                  "value" : "Integer",
-                  "status" : true,
-                  "child" : [
+                  "value": "String",
+                  "status": true,
+                  "child": [
                     {
-                      "value" : "hargaApel",
-                      "status" : true,
-                      "child" : [
+                      "value": "=",
+                      "status": true,
+                      "child": [
                         {
-                          "value" : "=",
-                          "status" : true,
-                          "child" : [
-                            {
-                              "value": "10000",
-                              "status": true,
-                              "message": "Benar"
-                            },
-                            {
-                              "value" : null,
-                              "status" : false,
-                              "message" : "Nilai pada hargaApel seharusnya 10000"
-                            }
-                          ]
+                          "value": "budi",
+                          "status": true,
+                          "message": "Benar"
                         },
                         {
-                          "value" : null,
-                          "status" : false,
-                          "message" : "Berikan inisialisasi dengan tanda = pada variabel"
+                          "value": null,
+                          "status": false,
+                          "message": "Nilai konstanta pada variable nama seharusnya budi"
                         }
                       ]
                     },
                     {
-                      "value" : null,
-                      "status" : false,
-                      "message" : "Variabel perlu diberi inisialisasi"
+                      "value": null,
+                      "status": false,
+                      "message": "Berikan inisialisasi dengan tanda = pada variabel"
+                    },
+                    {
+                      "value": null,
+                      "status": false,
+                      "message": "Variabel perlu diberi inisialisasi"
                     }
                   ]
                 },
                 {
-                  "value" : null,
-                  "status" : false,
-                  "message" : "Tipe Variabel harus bertipe Integer"
+                  "value": null,
+                  "status": false,
+                  "message": "Tipe Variabel harus bertipe Integer"
                 }
               ]
             },
             {
-              "value" : null,
-              "status" : false,
-              "message" : "Kurang tanda : setelah nama variabel"
+              "value": null,
+              "status": false,
+              "message": "Kurang tanda : setelah nama variabel"
             }
           ]
         },
         {
-          "value" : null,
-          "status" : false,
-          "message" : "Nama variabel tidak sesuai dengan perintah"
+          "value": null,
+          "status": false,
+          "message": "Nama variabel tidak sesuai dengan perintah"
         }
       ]
     },
     {
-      "value" : "val",
-      "status" : false,
-      "message" : "Tipe variabel harusnya bersifat Mutable"
+      "value": "val",
+      "status": false,
+      "message": "Tipe variabel harusnya bersifat Mutable"
     },
     {
-      "value" : null,
-      "status" : false,
-      "message" : "Tipe variabel tidak diketahui"
+      "value": null,
+      "status": false,
+      "message": "Tipe variabel tidak diketahui"
     }
   ]
 }

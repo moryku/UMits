@@ -93,9 +93,7 @@ class TextMessageHandler implements EventHandler
         
         if (strpos($text, 'kotlin') !== false) {
             if (strpos($text, 'jawab') !== false) {
-                $string = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter1.json");
-                $json_a = json_decode($string, true);
-                if (strpos($text, '1') !== false) {
+                if (strpos($text, '1') !== false || strpos($text, '2') !== false || strpos($text, '3') !== false) {
                     $jawaban = "";
                     $a = explode("\n",$text);
                     $aOri = explode("\n",$textOri);
@@ -111,8 +109,19 @@ class TextMessageHandler implements EventHandler
                             }
                         }
                     }
-                    // $this->echoBack($replyToken, $jawaban);
-                    $jawaban = EvaluasiCore::search($json_a["answer"], $jawaban, $starttime);
+                    if (strpos($text, '3') !== false) {
+                        $string = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter3.json");
+                        $json_a = json_decode($string, true);
+                        $jawaban = EvaluasiCore::search($json_a["answer"], $jawaban, $starttime);
+                    } else if (strpos($text, '2') !== false) {
+                        $string = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter2.json");
+                        $json_a = json_decode($string, true);
+                        $jawaban = EvaluasiCore::search($json_a["answer"], $jawaban, $starttime);
+                    } else if (strpos($text, '1') !== false) {
+                        $string = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter1.json");
+                        $json_a = json_decode($string, true);
+                        $jawaban = EvaluasiCore::search($json_a["answer"], $jawaban, $starttime);
+                    }
                     $this->echoBack($replyToken, $jawaban);
                 }
             } else  {
@@ -122,9 +131,11 @@ class TextMessageHandler implements EventHandler
                 } else if (strpos($text, '2') !== false) { 
                     $string = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter1.json");
                     $string2 = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter2.json");
+                    $string3 = file_get_contents("/app/src/Evaluasi/Kotlin/Chapter3.json");
                     $json_a = json_decode($string, true);
                     $json_b = json_decode($string2, true);
-                    $this->echoBack($replyToken,  "Untuk masuk ke materi selanjutnya jawab pertanyaan Materi Kotlin Chapter 1 : \n\n"."Soal No 1.\n".$json_a["question"]."\n\n"."Soal No 2.\n".$json_b["question"]."\n\nContoh Cara Menjawab : \n\nJawab Quiz Kotlin Chapter 1 \n{Jawaban Anda}");
+                    $json_c = json_decode($string3, true);
+                    $this->echoBack($replyToken,  "Untuk masuk ke materi selanjutnya jawab pertanyaan Materi Kotlin Chapter 1 : \n\n"."Soal No 1.\n".$json_a["question"]."\n\n"."Soal No 2.\n".$json_b["question"]."\n\n"."Soal No 3.\n".$json_c["question"]."\n\nContoh Cara Menjawab : \n\nJawab Quiz Kotlin Chapter 1 Soal 1 \n{Jawaban Anda}");
                 } else {
                     $flexMessageBuilder = FlexModulBelajar::get();
                     $this->bot->replyMessage($replyToken, $flexMessageBuilder);
