@@ -1,0 +1,59 @@
+{
+  "id": "3",
+  "question": "Buatlah sebuah variable dengan nama miu yang mempunyai nilai 3.14",
+  "answer": [
+    {
+      "value": "var",
+      "status": true,
+      "child": [
+        {
+          "value": "miu",
+          "status": true,
+          "child": [
+            {
+              "value": "=",
+              "status": true,
+              "child": [
+                {
+                  "value": "budi",
+                  "status": true,
+                  "message": "Benar"
+                },
+                {
+                  "value": null,
+                  "status": false,
+                  "message": "Nilai konstanta pada variable nama seharusnya budi"
+                }
+              ]
+            },
+            {
+              "value": null,
+              "status": false,
+              "message": "Berikan inisialisasi dengan tanda = pada variabel"
+            },
+            {
+              "value": null,
+              "status": false,
+              "message": "Variabel perlu diberi inisialisasi"
+            }
+          ]
+        },
+        {
+          "value": null,
+          "status": false,
+          "message": "Nama variabel tidak sesuai dengan perintah"
+        }
+      ]
+    },
+    {
+      "value": "val",
+      "status": false,
+      "message": "Tipe variabel harusnya bersifat Mutable"
+    },
+    {
+      "value": null,
+      "status": false,
+      "message": "Tipe variabel tidak diketahui"
+    }
+  ]
+}
