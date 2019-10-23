@@ -23,14 +23,37 @@
                       "status": true,
                       "child": [
                         {
-                          "value": "budi",
+                          "value": "\"",
                           "status": true,
-                          "message": "Benar"
+                          "child": [
+                            {
+                              "value": "budi",
+                              "status": true,
+                              "message": "Benar",
+                              "child": [
+                                {
+                                  "value": "\"",
+                                  "status": true,
+                                  "message": "Benar"
+                                },
+                                {
+                                  "value": null,
+                                  "status": false,
+                                  "message": "Guna memberikan nilai pada tipe data string akhiri dengan tanda petik \""
+                                }
+                              ]
+                            },
+                            {
+                              "value": null,
+                              "status": false,
+                              "message": "Nilai konstanta pada constanta nama seharusnya budi"
+                            }
+                          ]
                         },
                         {
                           "value": null,
                           "status": false,
-                          "message": "Nilai konstanta pada constanta nama seharusnya budi"
+                          "message": "Guna memberikan nilai pada tipe data string awali dengan tanda petik \""
                         }
                       ]
                     },
