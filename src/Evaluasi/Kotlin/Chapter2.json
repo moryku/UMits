@@ -23,7 +23,7 @@
                       "status": true,
                       "child": [
                         {
-                          "value": "\"",
+                          "value": "'",
                           "status": true,
                           "child": [
                             {
@@ -32,14 +32,14 @@
                               "message": "Benar",
                               "child": [
                                 {
-                                  "value": "\"",
+                                  "value": "'",
                                   "status": true,
                                   "message": "Benar"
                                 },
                                 {
                                   "value": null,
                                   "status": false,
-                                  "message": "Guna memberikan nilai pada tipe data string akhiri dengan tanda petik \""
+                                  "message": "Guna memberikan nilai pada tipe data string akhiri dengan tanda petik '"
                                 }
                               ]
                             },
@@ -53,7 +53,7 @@
                         {
                           "value": null,
                           "status": false,
-                          "message": "Guna memberikan nilai pada tipe data string awali dengan tanda petik \""
+                          "message": "Guna memberikan nilai pada tipe data string awali dengan tanda petik '"
                         }
                       ]
                     },
